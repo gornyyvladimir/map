@@ -4,7 +4,7 @@ export const updateViewport = viewport => {
   return {
     type: UPDATE_VIEWPORT,
     payload: {
-      viewport
-    }
-  }
+      viewport,
+    },
+  };
 };

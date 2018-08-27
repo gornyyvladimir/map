@@ -4,7 +4,7 @@ import Map from '../components/Map/Map';
 
 const mapStateToProps = state => {
   return {
-    viewport: state.map.viewport
+    viewport: state.map.viewport,
   };
 };
 
@@ -14,4 +14,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Map);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Map);

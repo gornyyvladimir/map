@@ -4,7 +4,6 @@ import { updateViewport } from '../store/map/actions';
 import { FlyToInterpolator } from 'react-map-gl';
 
 class Page extends Component {
-
   handleClick = () => {
     const viewport = {
       ...this.props.viewport,
@@ -13,9 +12,9 @@ class Page extends Component {
       zoom: 16,
       transitionDuration: 5000,
       transitionInterpolator: new FlyToInterpolator(),
-    }
-    this.props.onUpdateViewport(viewport)
-  }
+    };
+    this.props.onUpdateViewport(viewport);
+  };
 
   render() {
     return (
@@ -28,7 +27,7 @@ class Page extends Component {
 
 const mapStateToProps = state => {
   return {
-    viewport: state.map.viewport
+    viewport: state.map.viewport,
   };
 };
 
@@ -38,4 +37,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Page);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Page);

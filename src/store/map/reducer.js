@@ -6,8 +6,8 @@ const initialState = {
     height: 600,
     latitude: 37.7577,
     longitude: -122.4376,
-    zoom: 12
-  }
+    zoom: 12,
+  },
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,9 +17,9 @@ const reducer = (state = initialState, action) => {
         ...state,
         viewport: {
           ...state.viewport,
-          ...action.payload.viewport
-        }
-      }
+          ...action.payload.viewport,
+        },
+      };
     default:
       return state;
   }
