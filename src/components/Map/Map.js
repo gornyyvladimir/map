@@ -10,6 +10,7 @@ const Map = props => (
     {...props.viewport}
     mapboxApiAccessToken={MAPBOX_TOKEN}
     onViewportChange={props.onUpdateViewport}
+    mapStyle="mapbox://styles/mapbox/streets-v10"
   >
     <Popup latitude={55.7732618} longitude={49.2145468} offsetLeft={-20} offsetTop={-10}>
       <div>You are here</div>
