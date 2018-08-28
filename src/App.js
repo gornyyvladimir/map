@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import MapContainer from './containers/MapContainer';
-import Page from './containers/PageContainer';
+import React, { Component, Fragment } from 'react';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Main from './containers/MainContainer';
 
 class App extends Component {
   render() {
     return (
-      <div>
-        <MapContainer />
-        <Page />
-      </div>
+      <Fragment>
+        <CssBaseline />
+        <Main />
+      </Fragment>
     );
   }
 }
