@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { updateViewport } from '../store/map/actions';
+import { updateViewport, updatePosition } from '../store/map/actions';
 import Map from '../components/Map/Map';
 
 class MapContainer extends Component {
-  componentDidMount() {
-    this.goToCurrentLocation();
-  }
-
-  goToCurrentLocation() {
+  getCurrentPosition() {
     navigator.geolocation.getCurrentPosition(
       pos => {
-        const viewport = {
+        const position = {
           latitude: pos.coords.latitude,
           longitude: pos.coords.longitude,
         };
+        const viewport = {
+          ...position,
+          zoom: 16,
+        };
+        this.props.onUpdatePosition(position);
         this.props.onUpdateViewport(viewport);
       },
       error => {
@@ -25,7 +26,7 @@ class MapContainer extends Component {
   }
 
   handleLocationClick = () => {
-    this.goToCurrentLocation();
+    this.getCurrentPosition();
   };
 
   render() {
@@ -36,12 +37,14 @@ class MapContainer extends Component {
 const mapStateToProps = state => {
   return {
     viewport: state.map.viewport,
+    position: state.map.position,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     onUpdateViewport: viewport => dispatch(updateViewport(viewport)),
+    onUpdatePosition: position => dispatch(updatePosition(position)),
   };
 };
 
